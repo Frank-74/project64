@@ -166,24 +166,13 @@ void CSystemTimer::UpdateTimers()
     int TimeTaken = m_LastUpdate - m_NextTimer;
     if (TimeTaken != 0)
     {
-        int32_t random, wired;
         m_LastUpdate = m_NextTimer;
         m_Reg.COUNT_REGISTER += (TimeTaken / CGameSettings::OverClockModifier());
-        random = m_Reg.RANDOM_REGISTER - (TimeTaken / g_System->CountPerOp());
-        wired = m_Reg.WIRED_REGISTER;
-        if (random < wired)
+        m_Reg.RANDOM_REGISTER -= TimeTaken / g_System->CountPerOp();
+        while ((int)m_Reg.RANDOM_REGISTER < (int)m_Reg.WIRED_REGISTER)
         {
-            if (wired == 0)
-            {
-                random &= 31;
-            }
-            else
-            {
-                uint32_t increment = 32 - wired;
-                random += ((wired - random + increment - 1) / increment) * increment;
-            }
+            m_Reg.RANDOM_REGISTER += 32 - m_Reg.WIRED_REGISTER;
         }
-        m_Reg.RANDOM_REGISTER = random;
     }
 }
 
