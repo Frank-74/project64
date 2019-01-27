@@ -5133,6 +5133,7 @@ Internal Name=Shadowman
 Status=Compatible
 Counter Factor=1
 RDRAM Size=8
+Fixed Audio=1
 
 [60C437E5-A2251EE3-C:50]
 Good Name=Shadow Man (E) (M3) [!]
@@ -5140,6 +5141,7 @@ Internal Name=Shadowman
 Status=Compatible
 Counter Factor=1
 RDRAM Size=8
+Fixed Audio=1
 
 [EA06F8C3-07C2DEED-C:46]
 Good Name=Shadow Man (F)
@@ -5147,6 +5149,7 @@ Internal Name=Shadowman
 Status=Compatible
 Counter Factor=1
 RDRAM Size=8
+Fixed Audio=1
 
 [84D5FD75-BBFD3CDF-C:44]
 Good Name=Shadow Man (G)
@@ -5154,6 +5157,7 @@ Internal Name=Shadowman
 Status=Compatible
 Counter Factor=1
 RDRAM Size=8
+Fixed Audio=1
 
 [3A4760B5-2D74D410-C:45]
 Good Name=Shadow Man (U)
@@ -5161,6 +5165,7 @@ Internal Name=Shadowman
 Status=Compatible
 Counter Factor=1
 RDRAM Size=8
+Fixed Audio=1
 
 [D84EEA84-45B2F1B4-C:50]
 Good Name=Shadowgate 64 - Trials Of The Four Towers (E)
