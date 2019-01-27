@@ -45,12 +45,21 @@ void SoundDriverBase::AI_LenChanged(uint8_t *start, uint32_t length)
 {
     WriteTrace(TraceAudioDriver, TraceDebug, "Start");
 
+#define ENDIAN_SWAP_BYTE    (~0 & 0x7 & 3)
+#define BES(address)    ((address) ^ ENDIAN_SWAP_BYTE)
+    uint32_t hack = 0;
+    const uint16_t cart_ID = 0x0000
+        | (g_AudioInfo.HEADER[BES(0x3C)] << 8)
+        | (g_AudioInfo.HEADER[BES(0x3D)] << 0)
+        ;
+    hack = cart_ID;
+
     // Bleed off some of this buffer to smooth out audio
     if (g_settings->SyncAudio() || !g_settings->FullSpeed())
     {
         while ((m_BufferRemaining) == m_MaxBufferSize)
         {
-            pjutil::Sleep(1);
+            if (hack != 'MX') pjutil::Sleep(1); // temporary hack to fix Excitebike, needs setting added.
         }
     }
 
